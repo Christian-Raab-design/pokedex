@@ -1,0 +1,214 @@
+@font-face {
+    font-family: "Flexo-Demi";
+      font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Flexo-Demi.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Flexo-Medium";
+      font-style: medium;
+    font-weight: 500;
+    src: url("../fonts/Flexo-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Flexo-Bold";
+      font-style: bold;
+    font-weight: 700;
+    src: url("../fonts/Flexo-Bold.woff2") format("woff2");
+}
+
+
+
+
+h1 {
+    color: black;
+}
+
+
+h1 {
+  font-family: "Uncial Antiqua";
+  font-size: 40px;
+  text-align: center;
+  color: #f2f4f3;
+}
+
+h2 {
+  font-family: "Uncial Antiqua";
+  font-size: 28px;
+  text-align: center;
+  color: #22333b;
+}
+
+h3 {
+  font-family: "Uncial Antiqua";
+  font-size: 28px;
+  text-align: center;
+  color: #22333b;
+}
+
+h4 {
+  font-family: "Uncial Antiqua";
+  font-size: 20px;
+  text-align: center;
+  color: #a9927d;
+}
+
+h5 {
+  font-family: "arial";
+  font-size: 16px;
+  font-weight: 300;
+}
+
+body {
+  font-family: "Uncial Antiqua";
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column;
+}
+
+p {
+  color: white;
+  text-align: center;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+
+header {
+  background-color: #22333b;
+  padding: 25px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 80px;
+}
+
+.search input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.pokedeck {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.pokemon-container{
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+
+  text-align: center;
+  width: 220px;
+  background-color: #F2F2F2;
+  margin: 0.5rem;
+  transition: transform 0.1s ease;
+  cursor: pointer;
+}
+
+@keyframes hoverJump {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-10px); }
+  60%  { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+.card:hover {
+  animation: hoverJump 0.4s ease;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  padding-bottom: 10px;
+  background-color: #e3e3e3;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.card-number{
+    font-size: 12px;
+    font-family: "Flexo-Bold", sans-serif;
+    text-align: left;
+    padding-left: 14px;
+    padding-top: 10px;
+}
+
+
+.card-name{
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    font-family: "Flexo-Demi", sans-serif;
+}
+
+.card-types{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: "Flexo-Medium", sans-serif;
+    padding: 6px;
+    margin: 6px;
+    border-radius: 12px;
+}
+
+span{
+    padding: 6px 12px 6px 12px ;
+    border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+  background-color: #22333b;
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+footer img {
+  width: 80px;
+}
