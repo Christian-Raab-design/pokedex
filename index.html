@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="js/api.js"></script>
-    <script type="module" src="js/script.js"></script>
-    <script type="module" src="js/template.js"></script>
+    <script  src="js/template.js"></script>
+    <script  src="js/script.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/colours.css">
     <title>Pokedex</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/PokeLogo.png">
 </head>
-<body>
+<body onload="init()">
  <header>
   <div class="container">
     <div class="logo">
@@ -19,21 +20,22 @@
       </a>
       <h1>Pokedex</h1>
     </div>
+     <!--
+    <form>
     <div class="search">
-      <input type="text" placeholder="Suche..." />
+      <input type="search" id="site-search" placeholder="Name oder Nummer" required size="30" minlength="3" maxlength="12" /><button onclick="startSearch()" class="search-button"><img src="img/search.png"></button><span class="validity"></span>
     </div>
+    </form>
+  -->
   </div>
 </header>
 <div class="pokedeck">
 <div class="pokemon-container" id="pokemonContainer"></div>
 </div>
-
-
-
-
-
-
-
+<div id="overlay" class="overlay hidden" onclick="handleOverlayClick(event)"></div>
+<div class="loadmore">
+  <button onclick="loadMore()">Load more...</button>
+</div>
 
     <footer>
         <div class="footer-logo">

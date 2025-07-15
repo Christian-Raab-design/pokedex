@@ -11,7 +11,14 @@
   background-color: #F08030;
 }
 
+.fighting {
+  color: white;
+  background-color: #4f4f4f;
+}
+
+
 .water {
+  color: white;
   background-color: #6890F0;
 }
 
@@ -38,6 +45,7 @@
 }
 
 .psychic {
+  color: white;
   background-color: #F85888;
 }
 
@@ -55,17 +63,24 @@
 }
 
 .dragon {
+  color: white;
   background-color: #7038F8;
 }
 
 .dark {
+  color: white;
   background-color: #705848;
 }
 
 .ghost {
+  color: white;
   background-color: #705898;
 }
 
 .fairy {
   background-color: #EE99AC;
+}
+
+.overlay-image.grass {
+  background-color: #78C850;
 }

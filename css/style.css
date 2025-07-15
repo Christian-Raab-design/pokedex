@@ -1,3 +1,15 @@
+html {
+  scroll-behavior: smooth;
+  font-size: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 @font-face {
     font-family: "Flexo-Demi";
       font-style: normal;
@@ -19,37 +31,28 @@
     src: url("../fonts/Flexo-Bold.woff2") format("woff2");
 }
 
-
-
-
 h1 {
-    color: black;
-}
-
-
-h1 {
-  font-family: "Uncial Antiqua";
+      color: black;
   font-size: 40px;
   text-align: center;
   color: #f2f4f3;
 }
 
 h2 {
-  font-family: "Uncial Antiqua";
   font-size: 28px;
   text-align: center;
   color: #22333b;
+  margin: 0 4px 4px 4px;
 }
 
 h3 {
-  font-family: "Uncial Antiqua";
   font-size: 28px;
   text-align: center;
   color: #22333b;
 }
 
 h4 {
-  font-family: "Uncial Antiqua";
+
   font-size: 20px;
   text-align: center;
   color: #a9927d;
@@ -62,25 +65,19 @@ h5 {
 }
 
 body {
-  font-family: "Uncial Antiqua";
+  font-family: "Flexo-Medium";
   height: 100vh; 
   display: flex; 
   flex-direction: column;
-}
-
-p {
-  color: white;
-  text-align: center;
 }
 
 .cursor {
   cursor: pointer;
 }
 
-
 header {
   background-color: #22333b;
-  padding: 25px;
+  padding: 15px;
 }
 
 .container {
@@ -92,7 +89,6 @@ header {
   width: 100%;
 }
 
-
 .logo {
   display: flex;
   align-items: center;
@@ -103,14 +99,8 @@ header {
   width: 80px;
 }
 
-.search input {
-  padding: 8px 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-}
-
 .pokedeck {
+    display: flex;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
@@ -118,13 +108,15 @@ header {
 
 .pokemon-container{
     display: flex;
+    align-items: center;
+    justify-content: center; 
     flex-wrap: wrap; 
+    width: 100%; 
 }
 
 .card {
   background: white;
   border-radius: 8px;
-
   text-align: center;
   width: 220px;
   background-color: #F2F2F2;
@@ -148,7 +140,6 @@ header {
   width: 100%;
   height: auto;
   padding-bottom: 10px;
-  background-color: #e3e3e3;
   border-radius: 12px 12px 0px 0px;
 }
 
@@ -159,7 +150,6 @@ header {
     padding-left: 14px;
     padding-top: 10px;
 }
-
 
 .card-name{
     font-size: 24px;
@@ -182,20 +172,258 @@ span{
     border-radius: 6px;
 }
 
+button {
+  color: white;
+  font-family: "Flexo-Medium", sans-serif;
+  font-size: 18px;
+  background-color: #30A7D7;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.loadmore{
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* SEARCH*/
+
+.search {
+  display: flex;
+}
+
+.search input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-button {  
+  background-color: #30A7D7;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 8px 6px 8px;
+  margin-left: 10px;
+}
+
+.search-button img {  
+  width: 100%;
+  padding-top: 3px;
+}
+
+/* ACTIVATE OVERLAY*/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.hidden {
+  display: none;
+}
 
 
+/* OVERLAY DESIGN*/
+
+.overlay-card {
+  color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay-card h2{
+  color: white;
+}
+
+.overlay-top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding-top: 40px;
+  padding: 20px;
+  padding-bottom: 80px; 
+  min-height: 350px;
+}
+
+.overlay-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.overlay-bottom {
+  background-color: white;
+  padding: 20px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  margin-top: -16px; /* sorgt für den "Überlapp"-Effekt */
+  z-index: 1;
+}
+
+.overlay-content{
+  font-family: "Flexo-Medium";
+  color: #22333b;
+  font-size: 14px;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 4px;
+}
 
 
+.overlay-id {
+  color: white;
+  font-family: "Flexo-Medium";
+  font-size: 16px;
+  font-weight: normal;
+  padding-top: 4px;
+}
+
+.overlay-image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  position: absolute;
+  bottom: -20px; 
+  z-index: 2;
+}
+
+.overlay-types .type {
+  font-family: "Flexo-Bold", sans-serif;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: white;
+  text-transform: capitalize;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+
+.overlay-tabs {
+  font-family: "Flexo-Bold", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #777;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  text-decoration: underline;
+  text-decoration-color: #cccccc;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 1px;
+}
+
+.tab.active {
+  color: #333;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 2px;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: separate; 
+  border-spacing: 1em;
+}
+
+.info-table td {
+  vertical-align: middle;
+  padding: 4px 8px;
+}
 
 
+.stat-bar {
+  width: 100%;
+  background-color: #eee; 
+  border-radius: 8px;
+  overflow: hidden;
+  height: 10px;
+  margin: 0 auto;
+}
+
+.stat-fill {
+  height: 100%;
+  background-color: #4caf50;   
+}
 
 
+/* PFEILE */
+
+.arrow {
+  align-items: center;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+/* Evolution design */
+
+.evolutionChain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.evo_Poke {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evoutionImage {
+  width: 100px;
+  height: 100px;
+}
+
+.evo-card img {
+  height: 100px;
+}
 
 
-
-
-
-
+/* FOOTER BEREICH */
 
 footer {
   background-color: #22333b;
