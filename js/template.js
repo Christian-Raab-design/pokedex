@@ -6,7 +6,7 @@ function renderPokemon(pokemon) {
   const types = pokemon.types.map((t) => t.type.name);
  
 
-// Design für die normale Pokemon Karte
+// Design for the Pokemon Card
 
   const html = `
     <div class="card" onclick="openOverlay(${pokemon.id})">
@@ -22,7 +22,7 @@ function renderPokemon(pokemon) {
 }
 
 
-// Design für das Overlay inkl. Tabs
+// Design for the Overlay with Tabs
 
 function renderOverlay(pokemon) {
   const name = pokemon.name;
@@ -72,7 +72,7 @@ function renderOverlay(pokemon) {
 }
 
 
-// Inhalte Tab About
+// About Tab
 
 function renderTabAbout(pokemon) {
   return `
@@ -86,7 +86,7 @@ function renderTabAbout(pokemon) {
 }
 
 
-// Inhalte Tab Stats
+// Stats Tab
 
 function renderTabStats(pokemon) {
   return `
@@ -106,23 +106,22 @@ function renderTabStats(pokemon) {
 }
 
 
-// Inhalte Tab Evolution
+// Evolution Tab
 
 function renderTabEvolution(pokemonList) {
   return `
-    <div class="evolution-chain">
+    <div class="evolutionChain">
       ${pokemonList.map(pokemon => {
         const image = pokemon.sprites.other['official-artwork'].front_default;
-        const id = pokemon.id.toString().padStart(4, "0");
         const name = pokemon.name;
-        const types = pokemon.types.map(t => `<span class="type ${t.type.name}">${t.type.name}</span>`).join("");
+        const type = pokemon.types[0].type.name;
 
         return `
-          <div class="evo-card">
-            <img src="${image}" alt="${name}">
+          <div class="evo_Poke">
+            <div class="circle ${type}">
+              <img class="evolutionImage" src="${image}" alt="${name}">
+            </div>
             <div class="evo-name">${name}</div>
-            <div class="evo-id">#${id}</div>
-            <div class="evo-types">${types}</div>
           </div>
         `;
       }).join("")}
@@ -131,16 +130,16 @@ function renderTabEvolution(pokemonList) {
 }
 
 
-// Inhalte Tab Moves
+
+
+// Moves Tab
 
 function renderTabMoves(pokemon) {
-  const moves = pokemon.moves.map(m => m.move.name).slice(0, 10); // nur die ersten 10 Moves
+  const moves = pokemon.moves.map(m => m.move.name).slice(0, 10);
 
   return `
-    <div class="moves-list">
-      <ul>
-        ${moves.map(move => `<li>${move}</li>`).join("")}
-      </ul>
+    <div class="moves-container">
+      ${moves.map(move => `<span class="move-pill">${move}</span>`).join("")}
     </div>
   `;
 }

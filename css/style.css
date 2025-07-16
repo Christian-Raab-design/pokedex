@@ -9,30 +9,29 @@ html {
   box-sizing: border-box;
 }
 
-
 @font-face {
-    font-family: "Flexo-Demi";
-      font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/Flexo-Demi.woff2") format("woff2");
+  font-family: "Flexo-Demi";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Flexo-Demi.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Flexo-Medium";
-      font-style: medium;
-    font-weight: 500;
-    src: url("../fonts/Flexo-Medium.woff2") format("woff2");
+  font-family: "Flexo-Medium";
+  font-style: medium;
+  font-weight: 500;
+  src: url("../fonts/Flexo-Medium.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Flexo-Bold";
-      font-style: bold;
-    font-weight: 700;
-    src: url("../fonts/Flexo-Bold.woff2") format("woff2");
+  font-family: "Flexo-Bold";
+  font-style: bold;
+  font-weight: 700;
+  src: url("../fonts/Flexo-Bold.woff2") format("woff2");
 }
 
 h1 {
-      color: black;
+  color: black;
   font-size: 40px;
   text-align: center;
   color: #f2f4f3;
@@ -52,7 +51,6 @@ h3 {
 }
 
 h4 {
-
   font-size: 20px;
   text-align: center;
   color: #a9927d;
@@ -66,8 +64,8 @@ h5 {
 
 body {
   font-family: "Flexo-Medium";
-  height: 100vh; 
-  display: flex; 
+  height: 100vh;
+  display: flex;
   flex-direction: column;
 }
 
@@ -100,18 +98,18 @@ header {
 }
 
 .pokedeck {
-    display: flex;
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
+  display: flex;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.pokemon-container{
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    flex-wrap: wrap; 
-    width: 100%; 
+.pokemon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .card {
@@ -119,17 +117,25 @@ header {
   border-radius: 8px;
   text-align: center;
   width: 220px;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   margin: 0.5rem;
   transition: transform 0.1s ease;
   cursor: pointer;
 }
 
 @keyframes hoverJump {
-  0%   { transform: translateY(0); }
-  30%  { transform: translateY(-10px); }
-  60%  { transform: translateY(5px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .card:hover {
@@ -143,46 +149,46 @@ header {
   border-radius: 12px 12px 0px 0px;
 }
 
-.card-number{
-    font-size: 12px;
-    font-family: "Flexo-Bold", sans-serif;
-    text-align: left;
-    padding-left: 14px;
-    padding-top: 10px;
+.card-number {
+  font-size: 12px;
+  font-family: "Flexo-Bold", sans-serif;
+  text-align: left;
+  padding-left: 14px;
+  padding-top: 10px;
 }
 
-.card-name{
-    font-size: 24px;
-    padding: 20px 0 20px 0;
-    font-family: "Flexo-Demi", sans-serif;
+.card-name {
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  font-family: "Flexo-Demi", sans-serif;
 }
 
-.card-types{
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    font-family: "Flexo-Medium", sans-serif;
-    padding: 6px;
-    margin: 6px;
-    border-radius: 12px;
+.card-types {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-family: "Flexo-Medium", sans-serif;
+  padding: 6px;
+  margin: 6px;
+  border-radius: 12px;
 }
 
-span{
-    padding: 6px 12px 6px 12px ;
-    border-radius: 6px;
+span {
+  padding: 6px 12px 6px 12px;
+  border-radius: 6px;
 }
 
 button {
   color: white;
   font-family: "Flexo-Medium", sans-serif;
   font-size: 18px;
-  background-color: #30A7D7;
+  background-color: #30a7d7;
   border: none;
   border-radius: 5px;
   padding: 12px;
 }
 
-.loadmore{
+.loadmore {
   display: flex;
   justify-content: center;
   padding-top: 25px;
@@ -202,15 +208,15 @@ button {
   border-radius: 4px;
 }
 
-.search-button {  
-  background-color: #30A7D7;
+.search-button {
+  background-color: #30a7d7;
   border: none;
   border-radius: 5px;
   padding: 6px 8px 6px 8px;
   margin-left: 10px;
 }
 
-.search-button img {  
+.search-button img {
   width: 100%;
   padding-top: 3px;
 }
@@ -223,7 +229,7 @@ button {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +239,6 @@ button {
 .hidden {
   display: none;
 }
-
 
 /* OVERLAY DESIGN*/
 
@@ -247,7 +252,7 @@ button {
   flex-direction: column;
 }
 
-.overlay-card h2{
+.overlay-card h2 {
   color: white;
 }
 
@@ -255,10 +260,10 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   padding-top: 40px;
   padding: 20px;
-  padding-bottom: 80px; 
+  padding-bottom: 80px;
   min-height: 350px;
 }
 
@@ -275,11 +280,11 @@ button {
   padding: 20px;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
-  margin-top: -16px; /* sorgt für den "Überlapp"-Effekt */
+  margin-top: -16px; 
   z-index: 1;
 }
 
-.overlay-content{
+.overlay-content {
   font-family: "Flexo-Medium";
   color: #22333b;
   font-size: 14px;
@@ -292,7 +297,6 @@ button {
   width: 100%;
   margin-bottom: 4px;
 }
-
 
 .overlay-id {
   color: white;
@@ -307,7 +311,7 @@ button {
   height: 250px;
   object-fit: contain;
   position: absolute;
-  bottom: -20px; 
+  bottom: -20px;
   z-index: 2;
 }
 
@@ -353,7 +357,7 @@ button {
 }
 
 table {
-  border-collapse: separate; 
+  border-collapse: separate;
   border-spacing: 1em;
 }
 
@@ -362,10 +366,9 @@ table {
   padding: 4px 8px;
 }
 
-
 .stat-bar {
   width: 100%;
-  background-color: #eee; 
+  background-color: #eee;
   border-radius: 8px;
   overflow: hidden;
   height: 10px;
@@ -374,11 +377,10 @@ table {
 
 .stat-fill {
   height: 100%;
-  background-color: #4caf50;   
+  background-color: #4caf50;
 }
 
-
-/* PFEILE */
+/* ARROWS */
 
 .arrow {
   align-items: center;
@@ -398,13 +400,15 @@ table {
   -webkit-transform: rotate(135deg);
 }
 
+
 /* Evolution design */
 
 .evolutionChain {
   display: flex;
-  justify-content: center;
+  flex-direction: column; 
   align-items: center;
-  gap: 20px;
+  gap: 30px;
+  padding: 20px 0;
 }
 
 .evo_Poke {
@@ -413,17 +417,108 @@ table {
   align-items: center;
 }
 
-.evoutionImage {
+.circle {
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
 }
 
-.evo-card img {
+.evolutionImage {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.evo-name {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+
+/* MOVES DESIGN */
+
+.moves-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.move-pill {
+  background-color: #eee;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: "Flexo-Medium", sans-serif;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-transform: capitalize;
+  transition: background-color 0.2s;
+}
+
+.move-pill:hover {
+  background-color: #30a7d7;
+  color: white;
+  cursor: default;
+}
+
+.spinner-logo {
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-top: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+.spinner-logo {
+  width: 100px;
   height: 100px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 
-/* FOOTER BEREICH */
+/* FOOTER */
 
 footer {
   background-color: #22333b;
@@ -439,4 +534,20 @@ footer {
 
 footer img {
   width: 80px;
+}
+
+@media (max-width: 600px) {
+  .logo h1 {
+    display: none;
+  }
+
+  .search {
+    display: flex;
+    padding: 2px 8px;
+  }
+
+  .search input {
+    width: 140px;
+    font-size: 12px;
+  }
 }

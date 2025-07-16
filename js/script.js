@@ -1,10 +1,10 @@
 
-// === API Funktionen (aus pokedex API) ===
+// === API Pokedex ===
 
 const BASE_URL = "https://pokeapi.co/api/v2";
 
 
-// Laden von 36 Pokemon
+// Load 36 Pokemon
 
 async function fetchAllPokemon({ limit = 36, offset = 0 } = {}) {
   const response = await fetch(`${BASE_URL}/pokemon?limit=${limit}&offset=${offset}`);
@@ -13,7 +13,7 @@ async function fetchAllPokemon({ limit = 36, offset = 0 } = {}) {
 }
 
 
-// Lädt die kompletten Daten des Pokemon
+// Loading Pokemon Details
 
 async function fetchPokemonByUrl(url = "") {
   const response = await fetch(url);
@@ -22,7 +22,7 @@ async function fetchPokemonByUrl(url = "") {
 }
 
 
-// Laden der Evolution 
+// Loading Pokemon Evolution Data
 
 async function fetchEvolutionChainUrl(pokemon) {
   const speciesResponse = await fetch(pokemon.species.url);
@@ -31,7 +31,7 @@ async function fetchEvolutionChainUrl(pokemon) {
 }
 
 
-// Lädt den Pokemon über den Namen
+// Loading Pokemon over Name
 
 async function fetchPokemonByName(name) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
@@ -39,59 +39,63 @@ async function fetchPokemonByName(name) {
   return data;
 }
 
-let loadedCount = 0; // Globale speicherung der Pokemon
-let loadedPokemon = []; // Geladene Pokemon
-let currentPokemon = null; // Aktueller Pokemon
+let loadedCount = 0; // Saving loaded pokemon
+let loadedPokemon = []; // loaded Pokemon
+let currentPokemon = null; // Current Pokemon
 console.log(loadedPokemon)
 
 
-// Initiales laden der Pokemons
+// Initial loadin of the first 36 Pokemons
 
 async function init() {
-  const container = document.getElementById('pokemonContainer'); // HTML Element aus der Index
-  const list = await fetchAllPokemon({ limit: 36, offset: loadedCount }); // Hole 36 Pokémon-URLs
+  showLoading(); 
 
-  let allHTML = ''; // HTML leeren
+  const container = document.getElementById('pokemonContainer');
+  const list = await fetchAllPokemon({ limit: 36, offset: loadedCount });
 
-  // Details des Pokemon laden
+  let allHTML = '';
+
   for (let i = 0; i < list.length; i++) {
     const pokemon = await fetchPokemonByUrl(list[i].url);
-    loadedPokemon.push(pokemon); // Speichere für Overlay
-    allHTML += renderPokemon(pokemon); // Erzeuge HTML
-  }
-
-  container.innerHTML = allHTML;
-  loadedCount += 36; // Zähler erhöhen
-}
-
-
-// Mehr Pokemon laden (Immer 36 für Optik)
-
-async function loadMore() {
-const container = document.getElementById('pokemonContainer'); // In die Seite einfügen
-  const list = await fetchAllPokemon({ limit: 36, offset: loadedCount }); // Import der ersten 40 Pokemon
-
-  let allHTML = ''; //Hier wird alles gesammelt
-
-for (let i = 0; i < list.length; i++)  {
-     const pokemon = await fetchPokemonByUrl(list[i].url);  
+    loadedPokemon.push(pokemon);
     allHTML += renderPokemon(pokemon);
   }
 
-   container.innerHTML += allHTML; // nicht ersetzen, sondern anhängen!
-  loadedCount += 36; // Zähler wird um 36 erhöht
-} 
+  container.innerHTML = allHTML;
+  loadedCount += 36;
 
-loadMore = loadMore;
-console.log("Aktueller loadedCount:", loadedCount);
+  hideLoading(); 
+}
+
+
+// Load More (36 Pokemon per loading)
+
+async function loadMore() {
+  const container = document.getElementById('pokemonContainer');
+  showLoading();
+
+  const list = await fetchAllPokemon({ limit: 36, offset: loadedCount });
+
+  let allHTML = '';
+  for (let i = 0; i < list.length; i++) {
+    const pokemon = await fetchPokemonByUrl(list[i].url);
+    allHTML += renderPokemon(pokemon);
+  }
+
+  container.innerHTML += allHTML;
+  loadedCount += 36;
+
+  hideLoading();
+}
+
 
 
 // OVERLAY 
 
 function openOverlay(id) {
-  const overlay = document.getElementById('overlay'); // Overlay aus Index
+  const overlay = document.getElementById('overlay'); 
 
-  // Mit for-Schleife durch loadedPokemon gehen, um das richtige Pokémon zu finden
+  // Loop through loadedPokemon to find the correct Pokemon
   let selectedPokemon = null;
   for (let i = 0; i < loadedPokemon.length; i++) {
     if (loadedPokemon[i].id === id) {
@@ -100,16 +104,16 @@ function openOverlay(id) {
     }
   }
 
-  // Rendern Overlay mit Pokemon
-  if (selectedPokemon) {
+  // Render Single Pokemon Overlay
+    if (selectedPokemon) {
     const html = renderOverlay(selectedPokemon);
     overlay.innerHTML = html;
     overlay.classList.remove('hidden');
 
-     // Das Pokémon global speichern, für Tabs
+     // Saving the Pokemon global
     currentPokemon = selectedPokemon;
 
-    // Zeigt About als ersten Tab
+    // Show About - First Impression in Overlay
     showTab('about');
   }
 }
@@ -124,7 +128,7 @@ function handleOverlayClick(event) {
 }
 
 
-// Overlay schließen
+// Close Overlay
 
 function closeOverlay() {
   const overlay = document.getElementById('overlay');
@@ -133,7 +137,7 @@ function closeOverlay() {
 }
 
 
-// Evolution Namen der Pokemons
+// Evolution Pokemon Name
 
 function extractEvolutionNames(chain) {
   const names = [];
@@ -142,25 +146,25 @@ function extractEvolutionNames(chain) {
   const second = first?.evolves_to?.[0];
   const third = second?.evolves_to?.[0];
 
-  if (first) names.push(first.species.name); // Erste Stufe (z. B. Bisasam)
-  if (second) names.push(second.species.name); // Zweite Stufe (z. B. Bisaknosp)
-  if (third) names.push(third.species.name); // Dritte Stufe (z. B. Bisaflor)
+  if (first) names.push(first.species.name); // First Evo (Bisasam)
+  if (second) names.push(second.species.name); // Second Evo (Bisaknosp)
+  if (third) names.push(third.species.name); // Third Evo (Bisaflor)
   return names;
 }
 
 
 async function loadEvolution(pokemon) {
-  const speciesResponse = await fetch(pokemon.species.url); // Species Daten des Pokemon
+  const speciesResponse = await fetch(pokemon.species.url); // Pokemon Species Data 
   const speciesData = await speciesResponse.json();
-  const evoUrl = speciesData.evolution_chain.url; // Liste der Evolutionskette
+  const evoUrl = speciesData.evolution_chain.url; // Evolution Chain
 
-  const evoResponse = await fetch(evoUrl); // Kenne in JSON 
+  const evoResponse = await fetch(evoUrl); 
   const evoData = await evoResponse.json();
 
-  const names = extractEvolutionNames(evoData.chain); // Hier wird der Name extrahiert um ihn weiter nutzen zu können
+  const names = extractEvolutionNames(evoData.chain); // Name extraction for later use
 
 
-  // Schleife durch jedes Pokemon + speicherung in evolutionData
+  // Loop through each Pokemon + save in evolutionData
 
   const evolutionData = [];
 
@@ -198,18 +202,17 @@ function showTab(tabName) {
 }
 }
 
-// Funktion für das wechseln der Tabs
+// Chaing Tabs in Card Overlay
 
 function switchTab(tabName) {
   const tabs = document.getElementsByClassName('tab');
   const content = document.getElementById('overlay-content');
 
-  // Alle Buttons deaktivieren (active entfernen)
   for (let i = 0; i < tabs.length; i++) {
     tabs[i].classList.remove('active');
   }
 
-  // Tab wechseln und aktiv machen
+  // Change Tab
   if (tabName === 'about') {
     tabs[0].classList.add('active');
     showTab(tabName);
@@ -218,56 +221,55 @@ function switchTab(tabName) {
     showTab(tabName);
   } else if (tabName === 'evolution') {
     tabs[2].classList.add('active');
-    showTab('evolution'); // das übernimmt alles zentral
+    showTab('evolution'); 
   } else if (tabName === 'moves') {
       tabs[3].classList.add('active');
       showTab(tabName);
   }
 }
 
-
-// Navigationspfeile
+// Card Navigation Arrows
 
 function PrevPokemon() {
-  // Finde die Position des aktuellen Pokémons in der Liste
+  // Find Pokemon in Index 
   let index = loadedPokemon.findIndex(function(pokemon) {
     return pokemon.id === currentPokemon.id;
   });
 
-  // Gehe ein Pokémon zurück. Wenn wir am Anfang sind, gehe ans Ende.
+  // One Step back -> on first Pokemon go to the end
   index = index - 1;
   if (index < 0) {
     index = loadedPokemon.length - 1;
   }
 
-  // Öffne das Overlay für das vorherige Pokémon
+  // Open Overlay for the previous card
   let previousPokemon = loadedPokemon[index];
   openOverlay(previousPokemon.id);
 }
 
 function NextPokemon() {
-  // Finde die Position des aktuellen Pokémons in der Liste
+  // Find Pokemon in Index 
   let index = loadedPokemon.findIndex(function(pokemon) {
     return pokemon.id === currentPokemon.id;
   });
 
-  // Gehe ein Pokémon weiter. Wenn wir am Ende sind, gehe zum Anfang.
+  // One step forward on the end go to the first
   index = index + 1;
   if (index >= loadedPokemon.length) {
     index = 0;
   }
 
-  // Öffne das Overlay für das nächste Pokémon
+  // Open Overlay for teh next
   let nextPokemon = loadedPokemon[index];
   openOverlay(nextPokemon.id);
 }
 
+// Loading Screen
 
+function showLoading() {
+  document.getElementById("loadingOverlay").classList.remove("hidden");
+}
 
-
-// Suchfunktion
-
-function startSearch() {
-
-
+function hideLoading() {
+  document.getElementById("loadingOverlay").classList.add("hidden");
 }
