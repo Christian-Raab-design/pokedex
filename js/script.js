@@ -89,33 +89,41 @@ async function loadMore() {
 }
 
 
-
-// OVERLAY 
+// Open Overlay on Cardclick and check the ID
 
 function openOverlay(id) {
-  const overlay = document.getElementById('overlay'); 
+  const overlay = document.getElementById('overlay');
 
-  // Loop through loadedPokemon to find the correct Pokemon
-  let selectedPokemon = null;
+  const selectedPokemon = findPokemonById(id);
+  if (selectedPokemon) {
+    renderOverlayForPokemon(selectedPokemon, overlay);
+  }
+}
+
+
+  // Loop through loadedPokemon to find the correct Pokemon by ID
+
+function findPokemonById(id) {
   for (let i = 0; i < loadedPokemon.length; i++) {
     if (loadedPokemon[i].id === id) {
-      selectedPokemon = loadedPokemon[i];
-      break;
+      return loadedPokemon[i];
     }
   }
+  return null;
+}
 
-  // Render Single Pokemon Overlay
-    if (selectedPokemon) {
-    const html = renderOverlay(selectedPokemon);
-    overlay.innerHTML = html;
-    overlay.classList.remove('hidden');
 
-     // Saving the Pokemon global
-    currentPokemon = selectedPokemon;
+// Render Overlay 
 
-    // Show About - First Impression in Overlay
-    showTab('about');
-  }
+function renderOverlayForPokemon(pokemon, overlayElement) {
+  const html = renderOverlay(pokemon);
+  overlayElement.innerHTML = html;
+  overlayElement.classList.remove('hidden');
+
+   // Saving the Pokemon global
+  currentPokemon = pokemon;
+  // Show About - First Impression in Overlay
+  showTab('about');
 }
 
 

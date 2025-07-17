@@ -1,6 +1,7 @@
 html {
   scroll-behavior: smooth;
   font-size: inherit;
+  height: 100%;
 }
 
 * {
@@ -62,6 +63,13 @@ h5 {
   font-weight: 300;
 }
 
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   font-family: "Flexo-Medium";
   height: 100vh;
@@ -96,6 +104,8 @@ header {
 .logo img {
   width: 80px;
 }
+
+
 
 .pokedeck {
   display: flex;
@@ -250,6 +260,7 @@ button {
   width: 400px;
   display: flex;
   flex-direction: column;
+
 }
 
 .overlay-card h2 {
@@ -282,6 +293,7 @@ button {
   border-top-right-radius: 24px;
   margin-top: -16px; 
   z-index: 1;
+  min-height: 380px;
 }
 
 .overlay-content {
@@ -331,6 +343,7 @@ button {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  padding-top: 10px;
   margin-bottom: 16px;
 }
 
@@ -388,6 +401,7 @@ table {
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  cursor: pointer;
 }
 
 .right {
@@ -405,10 +419,11 @@ table {
 
 .evolutionChain {
   display: flex;
-  flex-direction: column; 
+  flex-direction: row; 
   align-items: center;
-  gap: 30px;
-  padding: 20px 0;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
 }
 
 .evo_Poke {
@@ -523,13 +538,11 @@ table {
 footer {
   background-color: #22333b;
   width: 100%;
-  margin-top: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding: 10px 0;
+  margin-top: auto;
 }
 
 footer img {
@@ -550,4 +563,39 @@ footer img {
     width: 140px;
     font-size: 12px;
   }
+
+
+.overlay-card {
+  width: 300px;
+}
+
+.overlay-bottom {
+  min-height: 310px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0.7em;
+}
+
+.info-table td {
+  vertical-align: middle;
+  padding: 1px 8px;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+}
+
+.evolutionImage {
+  width: 55px;
+  height: 55px;
+}
+
+.evo-name {
+  font-size: 14px;
+}
+
+
 }

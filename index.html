@@ -12,7 +12,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/PokeLogo.png" />
   </head>
-  <body onload="init()">
+ <body onload="init()">
+  <div class="page-wrapper">
     <header>
       <div class="container">
         <div class="logo">
@@ -22,7 +23,7 @@
           <h1>Pokedex</h1>
         </div>
 
-        <!-- Suchbereich -->
+        <!-- Search -->
         <form onsubmit="return searchPokemon()">
           <div class="search">
             <input
@@ -42,35 +43,37 @@
       </div>
     </header>
 
-
     <!-- Card Deck -->
     <div class="pokedeck">
       <div class="pokemon-container" id="pokemonContainer"></div>
     </div>
-    <!-- Card Overlay -->
-    <div
-      id="overlay"
-      class="overlay hidden"
-      onclick="handleOverlayClick(event)"
-    ></div>
+
+    <!-- Overlay + Load More + Spinner -->
+    <div id="overlay" class="overlay hidden" onclick="handleOverlayClick(event)"></div>
     <div class="loadmore">
       <button id="loadMoreBtn" onclick="loadMore()">Load more...</button>
       <div id="loadMoreSpinner" style="display: none">
         <img src="img/PokeLogo.png" class="spinner-logo" alt="Lädt..." />
       </div>
     </div>
+
     <!-- Loading-Overlay -->
     <div id="loadingOverlay" class="loading-overlay hidden">
       <img src="img/PokeLogo.png" class="spinner-logo" alt="Lädt..." />
     </div>
     <!-- Footer -->
-    <footer>
-      <div class="footer-logo">
-        <a href="index.html"
-          ><img src="img/PokeLogo.png" alt="Logo Pokedex"
-        /></a>
-      </div>
-    </footer>
-    <script src="js/search.js"></script>
-  </body>
+  <footer>
+    <div class="footer-logo">
+      <a href="index.html">
+        <img src="img/PokeLogo.png" alt="Logo Pokedex" />
+      </a>
+    </div>
+  </footer>
+  </div>
+
+  
+
+  <script src="js/search.js"></script>
+</body>
+
 </html>

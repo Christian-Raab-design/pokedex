@@ -1,11 +1,17 @@
-// Check input length / min 3 Letters
+let allPokemonNames = []; // Global load allm Pokemon for search
+
+// Check input length / min 3 Letters + Autostart
 function checkSearchLength() {
   const input = document.getElementById("searchInput").value.trim();
   const button = document.getElementById("searchBtn");
-  button.disabled = input.length < 3;
-}
 
-let allPokemonNames = []; // Global load allm Pokemon for search
+  if (input.length >= 3) {
+    button.disabled = false;
+    searchPokemon(); // Start the search after 3 letters
+  } else {
+    button.disabled = true;
+  }
+}
 
 // Load all names at Start
 async function loadAllNames() {
